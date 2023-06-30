@@ -1,21 +1,19 @@
 import React from "react";
 
-const TaskCreation = ({ title, description, setTitle, setDescription }) => {
+const TaskCreation = ({
+  title,
+  description,
+  setTitle,
+  setDescription,
+  handleAdd,
+}) => {
   //   const [title, setTitle] = useState("");
   //   const [description, setDescription] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle task creation logic here
-    console.log("New task created:", title, description);
-    setTitle("");
-    setDescription("");
-  };
-
   return (
     <div>
-      <h2>Task Creation</h2>
-      <form onSubmit={handleSubmit} style={styles.form}>
+      <h2>Task Creation - App1</h2>
+      <form onSubmit={handleAdd} style={styles.form}>
         <label htmlFor='title' style={styles.label}>
           Title:
         </label>

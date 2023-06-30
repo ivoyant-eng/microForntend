@@ -1,6 +1,6 @@
 import React from "react";
 
-const TaskList = ({ tasks, setTasks }) => {
+const TaskList = ({ tasks, setTasks, handleViewDescription }) => {
   const handleTaskDelete = (taskId) => {
     const updatedTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(updatedTasks);
@@ -12,7 +12,13 @@ const TaskList = ({ tasks, setTasks }) => {
     }
 
     return tasks.map((task) => (
-      <div key={task.id} style={styles.taskItem}>
+      <div
+        key={task.id}
+        style={styles.taskItem}
+        onClick={(e) => {
+          handleViewDescription(e, task);
+        }}
+      >
         <h3>{task.title}</h3>
         <p>{task.description}</p>
         <button
@@ -28,7 +34,7 @@ const TaskList = ({ tasks, setTasks }) => {
 
   return (
     <div>
-      <h2>Task List</h2>
+      <h2>Task List - App2</h2>
       {renderTasks()}
     </div>
   );

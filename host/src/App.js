@@ -10,23 +10,47 @@ function App() {
   const [tasks, setTasks] = useState([
     { id: "one", title: "Zero Task", description: "This is description" },
   ]);
+  const [currentTask, setCurrentTask] = useState();
+
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    const id = Math.random().toString(36).substring(2, 8);
+    const newTask = {
+      id,
+      title,
+      description,
+    };
+    setTasks([...tasks, newTask]);
+    setTitle("");
+    setDescription("");
+  };
+
+  const handleViewDescription = (e, task) => {
+    e.preventDefault();
+    setCurrentTask(task);
+  };
 
   return (
     <div className=''>
-      <h1 className=''>App 2</h1>
-      <TaskDetail />
-      <React.Suspense fallback='Loading'>
-        <MFE2_TaskList tasks={tasks} setTasks={setTasks} />
-      </React.Suspense>
+      <h1 className=''>Host</h1>
+
       <React.Suspense fallback='Loading Button'>
         <MFE1_TaskCreation
           title={title}
           description={description}
           setDescription={setDescription}
           setTitle={setTitle}
+          handleAdd={handleAddTask}
         />
-        {/* <MFE2_TaskList /> */}
       </React.Suspense>
+      <React.Suspense fallback='Loading'>
+        <MFE2_TaskList
+          tasks={tasks}
+          setTasks={setTasks}
+          handleViewDescription={handleViewDescription}
+        />
+      </React.Suspense>
+      <TaskDetail task={currentTask} />
     </div>
   );
 }

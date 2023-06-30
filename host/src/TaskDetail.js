@@ -3,11 +3,11 @@ import React from "react";
 const TaskDetail = ({ task }) => {
   return (
     <div>
-      <h2>Task Detail</h2>
+      <h2>Task Detail - App3 (Host) </h2>
       {task ? (
         <div style={styles.taskItem}>
-          <h3>{task.title}</h3>
-          <p>{task.description}</p>
+          <h3>{task?.title}</h3>
+          <p>{task?.description}</p>
         </div>
       ) : (
         <p>No task selected.</p>
