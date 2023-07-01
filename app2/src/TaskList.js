@@ -1,11 +1,10 @@
 import React from "react";
 import useStore from "MFE3/store";
 
-const TaskList = ({ handleViewDescription }) => {
-  const { tasks, setCurrentTask, removeTask } = useStore();
+const TaskList = () => {
+  const { tasks, removeTask, setCurrentTask } = useStore();
+
   const handleTaskDelete = (taskId) => {
-    // const updatedTasks = tasks.filter((task) => task.id !== taskId);
-    // setTasks(updatedTasks);
     removeTask(taskId);
   };
 
@@ -19,7 +18,7 @@ const TaskList = ({ handleViewDescription }) => {
         key={task.id}
         style={styles.taskItem}
         onClick={(e) => {
-          handleViewDescription(e, task);
+          setCurrentTask(task);
         }}
       >
         <h3>{task.title}</h3>

@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 const useStore = create((set) => ({
   // Intial States
-  title: "New Title",
+  title: "",
   description: "",
   tasks: [
     {
@@ -43,9 +43,11 @@ const useStore = create((set) => ({
    * @param {string} id - The Id of the task to be deleted
    */
   removeTask: (id) => {
-    let newTask = state.tasks.filter((task) => task.id !== id);
-    console.log(newTask);
-    return set({ tasks: newTask });
+    set((state) => {
+      return {
+        tasks: state.tasks.filter((task) => task.id !== id),
+      };
+    });
   },
 
   /**
@@ -56,7 +58,7 @@ const useStore = create((set) => ({
    * @param {string} payload.description - The description of the task.
    */
 
-  addCurrentTask: (payload) => set({ currentTask: payload }),
+  setCurrentTask: (payload) => set({ currentTask: payload }),
 }));
 
 export default useStore;

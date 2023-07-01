@@ -1,6 +1,8 @@
 import React from "react";
+import useStore from "MFE3/store";
 
-const TaskDetail = ({ task }) => {
+const TaskDetail = () => {
+  const { currentTask: task } = useStore();
   return (
     <div>
       <h2>Task Detail - App3 (Host) </h2>

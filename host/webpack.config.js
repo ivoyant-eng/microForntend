@@ -35,6 +35,7 @@ module.exports = {
       remotes: {
         MFE1: "MFE1@http://localhost:8083/remoteEntry.js",
         MFE2: "MFE2@http://localhost:8082/remoteEntry.js",
+        MFE3: "MFE3@http://localhost:8081/remoteEntry.js", // Needed to sync the store
       },
       exposes: {
         "./store": "./src/store",
