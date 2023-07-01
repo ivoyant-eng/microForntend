@@ -32,8 +32,10 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "MFE2",
       filename: "remoteEntry.js",
+
       remotes: {
         MFE1: "MFE1@http://localhost:8083/remoteEntry.js",
+        MFE3: "MFE3@http://localhost:8081/remoteEntry.js",
       },
       exposes: {
         "./TaskList": "./src/TaskList",

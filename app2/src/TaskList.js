@@ -1,9 +1,12 @@
 import React from "react";
+import useStore from "MFE3/store";
 
-const TaskList = ({ tasks, setTasks, handleViewDescription }) => {
+const TaskList = ({ handleViewDescription }) => {
+  const { tasks, setCurrentTask, removeTask } = useStore();
   const handleTaskDelete = (taskId) => {
-    const updatedTasks = tasks.filter((task) => task.id !== taskId);
-    setTasks(updatedTasks);
+    // const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    // setTasks(updatedTasks);
+    removeTask(taskId);
   };
 
   const renderTasks = () => {

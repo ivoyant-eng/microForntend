@@ -18,19 +18,6 @@ function App() {
 
   const [currentTask, setCurrentTask] = useState();
 
-  const handleAddTask = (e) => {
-    e.preventDefault();
-    const id = Math.random().toString(36).substring(2, 8);
-    const newTask = {
-      id,
-      title,
-      description,
-    };
-    addTask(newTask);
-    setTitle("");
-    setDescription("");
-  };
-
   const handleViewDescription = (e, task) => {
     e.preventDefault();
     setCurrentTask(task);
@@ -41,13 +28,7 @@ function App() {
       <h1 className=''>Host</h1>
 
       <React.Suspense fallback='Loading Button'>
-        <MFE1_TaskCreation
-          title={title}
-          description={description}
-          setDescription={setDescription}
-          setTitle={setTitle}
-          handleAdd={handleAddTask}
-        />
+        <MFE1_TaskCreation />
       </React.Suspense>
       <React.Suspense fallback='Loading'>
         <MFE2_TaskList

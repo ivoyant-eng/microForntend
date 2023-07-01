@@ -45,6 +45,9 @@ module.exports = {
           eager: true,
         },
       },
+      remotes: {
+        MFE3: "MFE3@http://localhost:8081/remoteEntry.js",
+      },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

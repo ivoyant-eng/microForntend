@@ -1,19 +1,26 @@
 import React from "react";
+import useStore from "MFE3/store";
 
-const TaskCreation = ({
-  title,
-  description,
-  setTitle,
-  setDescription,
-  handleAdd,
-}) => {
-  //   const [title, setTitle] = useState("");
-  //   const [description, setDescription] = useState("");
+const TaskCreation = () => {
+  const { title, description, setDescription, setTitle, addTask } = useStore();
+
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    const id = Math.random().toString(36).substring(2, 8);
+    const newTask = {
+      id,
+      title,
+      description,
+    };
+    addTask(newTask);
+    setTitle("");
+    setDescription("");
+  };
 
   return (
     <div>
       <h2>Task Creation - App1</h2>
-      <form onSubmit={handleAdd} style={styles.form}>
+      <form onSubmit={handleAddTask} style={styles.form}>
         <label htmlFor='title' style={styles.label}>
           Title:
         </label>

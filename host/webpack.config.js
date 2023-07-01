@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const deps = require("./package.json").dependencies;
+
 module.exports = {
   mode: "development",
   devServer: {
@@ -33,6 +35,18 @@ module.exports = {
       remotes: {
         MFE1: "MFE1@http://localhost:8083/remoteEntry.js",
         MFE2: "MFE2@http://localhost:8082/remoteEntry.js",
+      },
+      exposes: {
+        "./store": "./src/store",
+      },
+      shared: {
+        ...deps,
+        react: {
+          eager: true,
+        },
+        ["react-dom"]: {
+          eager: true,
+        },
       },
     }),
     new HtmlWebpackPlugin({
