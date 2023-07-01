@@ -1,15 +1,21 @@
 import TaskDetail from "./TaskDetail";
 import React, { useState } from "react";
+import useStore from "./store";
 
 const MFE2_TaskList = React.lazy(() => import("MFE2/TaskList"));
 const MFE1_TaskCreation = React.lazy(() => import("MFE1/TaskCreation"));
 
 function App() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [tasks, setTasks] = useState([
-    { id: "one", title: "Zero Task", description: "This is description" },
-  ]);
+  const {
+    description,
+    setDescription,
+    title,
+    setTitle,
+    tasks,
+    addTask,
+    removeTask,
+  } = useStore();
+
   const [currentTask, setCurrentTask] = useState();
 
   const handleAddTask = (e) => {
@@ -20,7 +26,7 @@ function App() {
       title,
       description,
     };
-    setTasks([...tasks, newTask]);
+    addTask(newTask);
     setTitle("");
     setDescription("");
   };
@@ -46,7 +52,6 @@ function App() {
       <React.Suspense fallback='Loading'>
         <MFE2_TaskList
           tasks={tasks}
-          setTasks={setTasks}
           handleViewDescription={handleViewDescription}
         />
       </React.Suspense>
