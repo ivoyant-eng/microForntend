@@ -7,9 +7,6 @@ const TaskCreation = ({
   setDescription,
   handleAdd,
 }) => {
-  //   const [title, setTitle] = useState("");
-  //   const [description, setDescription] = useState("");
-
   return (
     <div>
       <h2>Task Creation - App1</h2>
